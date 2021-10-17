@@ -1,0 +1,82 @@
+
+{:ws {:root "~/.saite/resources"
+      :locals ["R", "Charts"]}
+
+ :evalcode {:on-load true}
+
+ :editor
+ {:name "emacs"
+  :mode "clojure"
+  :theme "zenburn"
+  :size {:edout {:height 900
+                 :width  730
+                 :out-height 900
+                 :out-width 1300 }
+         :eddoc {:height 790
+                 :width  730
+                 :out-height 100
+                 :out-width 730}}
+  :key-bindings {"Ctrl-F"         pe/forward-sexp
+                 "Ctrl-B"         pe/backward-sexp
+                 "Ctrl-Left"      pe/forward-barf-sexp
+                 "Ctrl-Right"     pe/forward-slurp-sexp
+                 "Ctrl-Alt-Left"  pe/backward-barf-sexp
+                 "Ctrl-Alt-Right" pe/backward-slurp-sexp
+
+                 "Ctrl-Home"      em/go-doc-start
+                 "Ctrl-End"       em/go-doc-end
+                 "Ctrl-L"         recenter-top-bottom
+                 "Ctrl-X D"       show-doc
+                 "Ctrl-X S"       show-source
+
+                 "Alt-W"          enhanced-cut
+                 "Ctrl-Y"         enhanced-yank
+                 "Alt-K"          em/kill-sexp
+                 "Ctrl-X R"       em/query-replace
+                 "Ctrl-X Ctrl-B"  clear-output
+
+                 "Ctrl-Alt-T"     insert-txt-frame
+                 "Ctrl-Alt-C"     insert-cm-md
+                 "Ctrl-Alt-M"     insert-md
+                 "Ctrl-Alt-V"     insert-vis-frame
+                 "Ctrl-Alt-W"     enhanced-cut
+                 "Ctrl-Alt-Y"     enhanced-yank
+                 "Ctrl-X Ctrl-I"  insert-frame
+                 "Insert"         insert-frame
+                 "Ctrl-X Ctrl-D"  delete-frame
+                 "Delete"         delete-frame
+                 "Ctrl-X Ctrl-V"  re-visualize
+
+                 "Ctrl-X X"       xform-code
+                 "Ctrl-X Ctrl-E"  evalxe
+                 "Ctrl-X Ctrl-C"  eval-mixed-cc ;evalcc
+                 "Ctrl-X J"       evaljvm-xe
+                 "Ctrl-X Ctrl-J"  evaljvm-cc
+                 "Ctrl-X Ctrl-M"  eval-mixed-cc
+                 }}
+
+ :interactive-tab
+ {:edtype :interactive-doc :nssym "doc.code"
+  :order :row, :eltsper 1, :rgap 20, :cgap 20  :size "auto"
+  :layout :up-down, :ed-out-order :first-last
+  :md-defaults {:md {:vmargin "50px"
+                     :margin  "200px"
+                     :width "800px"
+                     :font-size "16px"}
+                :cm {:width "500px" ;;:height "30px"
+                     :out-width "500px" ;; :out-height "0px"
+                     :ed-out-order :first-last}}
+  :doc {:max-height "850px"
+        :max-width "2000px"}
+  }
+
+ :locs
+ {:docs  "~/.saite/Docs"
+  :chart "~/.saite/Charts"
+  :code  "~/.saite/Code"
+  :data  "~/.saite/Data"
+  :downloads {:linux "~/Downloads"
+              :mac "~/Downloads"
+              :win "~/Downloads"}}
+
+ }

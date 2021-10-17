@@ -1,0 +1,1 @@
+[{:x "SP_rrnaC23S", :y 469627} {:x "SP_rrnaC5S", :y 2615} {:x "SP_rrnaB23S", :y 467713} {:x "SP_rrnaD16S", :y 72409} {:x "SP_rrnaC16S", :y 71825} {:x "SP_rrnaA5S", :y 6868} {:x "SP_rrnaA23S", :y 1383104} {:x "SP_rrnaD23S", :y 468932} {:x "SP_rrnaD5S", :y 2536} {:x "SP_rrnaB16S", :y 73142} {:x "SP_rrnaA16S", :y 214444} {:x "SP_rrnaB5S", :y 2655}]
