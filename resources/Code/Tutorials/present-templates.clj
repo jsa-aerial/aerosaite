@@ -2,18 +2,20 @@
 ;;; A walk through 'exercise' with templates, substitution keys and
 ;;; transformations using them.
 
-;;; hc/xform is the general transformation function. It actually can work on ;;; any nested set of collections. Typically the outer is a map, but need not 
-;;; be.
-;;; It has three signatures, one of which is variadic:
-;;; hc/xform [coll], hc/xform [coll submap], hc/xform [coll k v & kvs]
+;;; hc/xform is the general transformation function. It actually can
+;;; work on ;;; any nested set of collections. Typically the outer is
+;;; a map, but need not be.  It has three signatures, one of which is
+;;; variadic: hc/xform [coll], hc/xform [coll submap], hc/xform [coll
+;;; k v & kvs]
 
-;;; hc/get-default takes a key and returns its value in the default 
+;;; hc/get-default takes a key and returns its value in the default
 ;;; substitution key map AKA 'submap'.  Or nil if not there
 
-;;; To execute the forms here, one by one, you can put the cursor on the outer
-;;; most right paren and use Ctrl-X Ctrl-E (like Cider eval last sexp). Or,
-;;; put the cursor somewhere in the sexp (even at the end) and use
-;;; Ctrl-X Ctrl-C (like Cider Ctrl-C Ctrl-C eval outer sexp)
+;;; To execute the forms here, one by one, you can put the cursor on
+;;; the outer most right paren and use Ctrl-X Ctrl-E (like Cider eval
+;;; last sexp). Or, put the cursor somewhere in the sexp (even at the
+;;; end) and use Ctrl-X Ctrl-C (like Cider Ctrl-C Ctrl-C eval outer
+;;; sexp)
 
 ;;; uses only the default submap
 (hc/xform {:a :X})
@@ -69,7 +71,7 @@ ht/data-options
 ;;; If :DATA has a value it returns that.
 ((hc/get-default :VALDATA) {:DATA [{"one" 1} {"two" 2} {"three" 3}]})
 
-;;; ON SERVER SIDE ONLY: If :FDATA has a value the :VALDATA function looks up 
+;;; ON SERVER SIDE ONLY: If :FDATA has a value the :VALDATA function looks up
 ;;; :FDATA's substitution key function
 ;;; (https://github.com/jsa-aerial/hanami#subtitution-key-functions) and
 ;;; passes it the value of :FDATA, and the current submap. This function will
