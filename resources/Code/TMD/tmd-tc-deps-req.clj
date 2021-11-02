@@ -1,8 +1,8 @@
 
 
 ;;; Base deps and requires for TMD and TC
-(deps '[[techascent/tech.ml.dataset "6.016"]
-        [scicloj/tablecloth "6.012"]])
+(deps '[[techascent/tech.ml.dataset "6.025"]
+        [scicloj/tablecloth "6.025"]])
 
 (require '[tech.v3.dataset :as ds]
          '[tech.v3.datatype :as dtype]
