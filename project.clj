@@ -1,4 +1,4 @@
-(defproject aerial.aerosaite "0.25.21"
+(defproject aerial.aerosaite "0.25.23"
   :description
   "Saite for work with Aerobio and sequencing analysis and anything else!"
   :url "https://github.com/aerial/aerobio-saite"
@@ -10,15 +10,17 @@
   :global-vars {*warn-on-reflection* false
                 *assert* true}
 
-  :dependencies [[org.clojure/clojure        "1.10.1"]
+  :dependencies [[org.clojure/clojure        "1.10.3"]
                  [org.clojure/java.classpath "0.3.0"]
-                 [org.clojure/tools.reader   "1.0.0-beta3"]
+                 [org.clojure/tools.reader   "1.3.6"]
                  [org.clojure/tools.nrepl    "0.2.13"] ; Explicit nREPL
-                 [org.clojure/tools.cli      "0.3.3"]
+                 [org.clojure/tools.cli      "1.0.206"]
 
-                 [aerial.saite "0.25.21"]
-                 [clj-http                   "3.10.0"] ; http client, downloads
-                 [cpath-clj                  "0.1.2"]  ; JAR resources access
+                 [javax.xml.bind/jaxb-api "2.3.0"] ; needed jvm9+
+
+                 [aerial.saite "0.25.23"]
+                 [clj-http     "3.12.3"] ; http client, downloads
+                 [cpath-clj    "0.1.2"]  ; JAR resources access
                  ]
 
   :plugins [[cider/cider-nrepl "0.17.0"]
