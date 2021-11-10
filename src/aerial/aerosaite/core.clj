@@ -174,7 +174,8 @@
 
   (println "Installing resources...")
   (doseq [res ["Docs" "Data"
-               "linux-runserver" "mac-runserver"
+               "linux-runserver" "jvm11+-linux-runserver"
+               "mac-runserver"   "jvm11+-mac-runserver"
                "config.edn"]]
     (install-resource saitedir res))
 
@@ -225,7 +226,9 @@
           (do (println "Updating MKL support...")
               (install-mkl reldir))
 
-          (#{"linux-runserver" "mac-runserver" "config.edn"} res)
+          (#{"linux-runserver" "jvm11+-linux-runserver"
+             "mac-runserver"   "jvm11+-mac-runserver"
+             "config.edn"} res)
           (let [old (str res "-old")]
             (fs/copy (fs/join saitedir res) (fs/join saitedir old))
             (install-resource saitedir res))
