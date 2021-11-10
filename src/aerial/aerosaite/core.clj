@@ -230,7 +230,8 @@
              "mac-runserver"   "jvm11+-mac-runserver"
              "config.edn"} res)
           (let [old (str res "-old")]
-            (fs/copy (fs/join saitedir res) (fs/join saitedir old))
+            (when (fs/exists? (fs/join saitedir res))
+              (fs/copy (fs/join saitedir res) (fs/join saitedir old)))
             (install-resource saitedir res))
 
           :else
