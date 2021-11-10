@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ -f "/usr/local/lib/libiomp5.dylib" ]
+then
+    echo ""
+else
+    ln -s ~/.saite/Libs/lib* /usr/local/lib/
+fi
+
+/usr/bin/nohup java \
+               --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED \
+               --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+               -cp SAITEDIR/resources:SAITEDIR/aerial.aerosaite-VERSION-standalone.jar aerial.aerosaite.core \
+               --port 3000 --repl-port 4100 > start.log &
