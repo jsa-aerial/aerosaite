@@ -11,7 +11,7 @@
   :size {:edout {:height 900
                  :width  730
                  :out-height 900
-                 :out-width 1300 }
+                 :out-width 1900 }
          :eddoc {:height 800
                  :width  730
                  :out-height 100
@@ -66,7 +66,7 @@
                 :cm {:width "500px" ;;:height "30px"
                      :out-width "500px" ;; :out-height "0px"
                      :ed-out-order :first-last}}
-  :doc {:max-height "950px"
+  :doc {:max-height "920px"
         :max-width "2000px"}
   }
 
