@@ -1,4 +1,4 @@
-(defproject aerial.aerosaite "0.25.23"
+(defproject aerial.aerosaite "1.0.0"
   :description
   "Saite for work with Aerobio and sequencing analysis and anything else!"
   :url "https://github.com/aerial/aerobio-saite"
@@ -16,9 +16,7 @@
                  [org.clojure/tools.nrepl    "0.2.13"] ; Explicit nREPL
                  [org.clojure/tools.cli      "1.0.206"]
 
-                 [javax.xml.bind/jaxb-api "2.3.0"] ; needed jvm9+
-
-                 [aerial.saite "0.25.23"]
+                 [aerial.saite "1.0.0"]
                  [clj-http     "3.12.3"] ; http client, downloads
                  [cpath-clj    "0.1.2"]  ; JAR resources access
                  ]
