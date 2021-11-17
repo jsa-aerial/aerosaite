@@ -58,7 +58,7 @@
          {:LAYER [(hc/xform trend-layer)
                   (hc/xform
                    trend-layer
-                   :TRANSFORM [{:loess :data/y :on :data/x}]
+                   :TRANSFORM [{:loess :data/y> :on :data/x>}]
                    :MCOLOR :trend-color>)]
           :trend-color> "firebrick"
           :xtype> :XTYPE :ytype> :YTYPE
