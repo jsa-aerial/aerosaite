@@ -49,11 +49,12 @@
 ;;; Trend chart - two layers.  1. base data, 2. loess trend line
 ;;; Parameters :data/x for x-axis data. :data/y> for y-axis data
 ;;;            :xtype> and :ytype> for axis types, will default to :XTYPE :YTYPE
-;;;            :width> and :height>, will default to :WIDTH and :HEIGHT
+;;;            :width>, will default to 700
+;;;            :height>, will default to :HEIGHT default
 ;;;            :trend-color> for loess line, defaults to "firebrick"
 (def trend-chart
   (assoc ht/layer-chart
-         :description ""
+         :description "A two layer plot for base data and its smoothed trend line given by loess transform"
          :aerial.hanami.templates/defaults
          {:LAYER [(hc/xform trend-layer)
                   (hc/xform
@@ -62,7 +63,8 @@
                    :MCOLOR :trend-color>)]
           :trend-color> "firebrick"
           :xtype> :XTYPE :ytype> :YTYPE
-          :width> 700 :height> (hc/get-defaults :HEIGHT)}))
+          :width> 700
+          :height> (hc/get-defaults :HEIGHT)}))
 
 
 
