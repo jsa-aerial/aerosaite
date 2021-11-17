@@ -40,7 +40,7 @@ If you already have Saite, you can update it to the latest version with the `--u
 To run, on Linux and MacOS, the simplest and best way is to use the scripts available in the `.saite` home directory:
 
 * `linux-runserver` : Linux JVM 8
-* `jvm11+-linux-runserver : Linux JVM 11+
+* `jvm11+-linux-runserver` : Linux JVM 11+
 * `mac-runserver` : MacOS JVM 8
 * `jvm11+-mac-runserver` : MacOS JVM 11+
 
