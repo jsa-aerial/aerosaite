@@ -46,7 +46,7 @@ To run, on Linux and MacOS, the simplest and best way is to use the scripts avai
 
 The reason for separate JVM 8 and 11+ versions is that JVM 9+ requires added switches to support [Neanderthal](https://neanderthal.uncomplicate.org) and [DeepDiamond](https://github.com/uncomplicate/deep-diamond).
 
-For Windows, you should be able to figure out the run command based on what you can see in the Linux and Mac scripts.
+For Windows, you should be able to figure out the run command based on what you can see in the Linux and Mac scripts.  Or better yet, if you know how to do this, a PR would be *great*!!
 
 
 
