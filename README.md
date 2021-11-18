@@ -9,6 +9,7 @@ Table of Contents
       * [Installation](#installation)
       * [Updating](#updating)
       * [Running](#running)
+      * [Take an overview stroll](#take-an-overview-stroll)
 
 [toc](https://github.com/ekalinin/github-markdown-toc)
 # Use
@@ -49,11 +50,18 @@ The reason for separate JVM 8 and 11+ versions is that JVM 9+ requires added swi
 For Windows, you should be able to figure out the run command based on what you can see in the Linux and Mac scripts.  Or better yet, if you know how to do this, a PR would be *great*!!
 
 
+## Take an overview stroll
+
+Once up and running navigate to `localhost:3000` (unless you changed the port in your scripts/run command).  You will see this as the startup 'page/screen':
 
 
+![Saite-start-page](resources/images/saite-start-page.png?raw=true)
 
 
+Click on the `Upload Document` button ![upload-button](resources/images/upload-doc-button.png?raw=true).  Then select `Scicloj` from `Session` and then select `SaiteOverview`.  After a couple seconds or so, you should see this page. You are placed in the gallery tab, but go to the left and start with `Overview` and just go left to right for a general overview.
 
+
+![Saite-start-page](resources/images/saite-overview-gallery-page.png?raw=true)
 
 
 
