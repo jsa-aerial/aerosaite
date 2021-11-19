@@ -1,5 +1,7 @@
 # aerosaite
-Saite delivered as self installing / running uberjar
+
+[Saite](https://github.com/jsa-aerial/saite) delivered as self installing / running uberjar
+
 
 Table of Contents
 =================
@@ -22,11 +24,11 @@ Or use curl or whatever else you like for fetching web located resources
 
 ## Installation
 
-Now able to use JDK 8 or JDK 11+
+Now able to use JDK 8 or JDK 11+.  However, only tested with 8 and 11, while 16 is not byte code compatible with pre/post 16 code.  In general just stick with LTS versions (so 17 probably will work fine as well).
 
 `java -jar aerial.aerosaite-1.0.0-standalone.jar --install`
 
-take the defaults, in particular `~/.saite` for application home directory.  MKL suitable for Neanderthal will be downloaded  as part of the installation.  It will also set up the paths on Linux and MacOS.  Windows will get the libraries in the `.saite/Libs` directory, but auto setup is not yet available for Win as I haven't had access to be able to put together a working script for it.
+take the defaults, in particular `~/.saite` for application home directory.  [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html#gs.gy8xm2) suitable for [Neanderthal](https://neanderthal.uncomplicate.org) will be downloaded  as part of the installation.  It will also set up the paths on Linux and MacOS.  Windows will get the libraries in the `.saite/Libs` directory, but auto setup is not yet available for Win as I haven't had access to be able to put together a working script for it.
 
 
 ## Updating
