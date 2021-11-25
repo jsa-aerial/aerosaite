@@ -24,7 +24,7 @@ Or use curl or whatever else you like for fetching web located resources
 
 ## Installation
 
-Now able to use JDK 8 or JDK 11+.  However, only tested with 8 and 11, while 16 is not byte code compatible with pre/post 16 code.  In general just stick with LTS versions (so 17 probably will work fine as well).
+Now able to use JDK 8 or JDK 11+.  However, only tested with 8 and 11, while 16 is deprecated with binary incompatibilities with 17.  In general just stick with LTS versions.  So 17 *might* work as well.  I will try testing that soonish and report here.
 
 `java -jar aerial.aerosaite-1.1.0-standalone.jar --install`
 
