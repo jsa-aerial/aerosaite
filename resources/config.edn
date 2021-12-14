@@ -16,8 +16,11 @@
                  :width  730
                  :out-height 100
                  :out-width 730}}
+  :hint-on-keyup false
   :key-bindings {"Ctrl-F"         pe/forward-sexp
+                 "Shift-Ctrl-F"   pe/forward-sexp
                  "Ctrl-B"         pe/backward-sexp
+                 "Shift-Ctrl-B"   pe/backward-sexp
                  "Ctrl-Left"      pe/forward-barf-sexp
                  "Ctrl-Right"     pe/forward-slurp-sexp
                  "Ctrl-Alt-Left"  pe/backward-barf-sexp
@@ -27,7 +30,10 @@
                  "Ctrl-End"       em/go-doc-end
                  "Ctrl-L"         recenter-top-bottom
                  "Ctrl-X D"       show-doc
+                 "Ctrl-Alt-D"     show-js-doc
                  "Ctrl-X S"       show-source
+                 "F9"             jvm-hint
+                 "Ctrl-F9"        js-hint
 
                  "Alt-W"          enhanced-cut
                  "Ctrl-Y"         enhanced-yank
@@ -36,9 +42,10 @@
                  "Ctrl-X Ctrl-B"  clear-output
 
                  "Ctrl-Alt-T"     insert-txt-frame
+                 "Ctrl-Alt-V"     insert-vis-frame
                  "Ctrl-Alt-C"     insert-cm-md
                  "Ctrl-Alt-M"     insert-md
-                 "Ctrl-Alt-V"     insert-vis-frame
+                 "Ctrl-Alt-\\"    insert-mjlt
                  "Ctrl-Alt-W"     enhanced-cut
                  "Ctrl-Alt-Y"     enhanced-yank
                  "Ctrl-X Ctrl-I"  insert-frame
