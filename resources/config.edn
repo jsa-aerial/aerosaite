@@ -29,8 +29,9 @@
                  "Ctrl-Home"      em/go-doc-start
                  "Ctrl-End"       em/go-doc-end
                  "Ctrl-L"         recenter-top-bottom
+
                  "Ctrl-X D"       show-doc
-                 "Ctrl-Alt-D"     show-js-doc
+                 "Ctrl-X H"       show-js-doc
                  "Ctrl-X S"       show-source
                  "F9"             jvm-hint
                  "Ctrl-F9"        js-hint
@@ -46,6 +47,8 @@
                  "Ctrl-Alt-C"     insert-cm-md
                  "Ctrl-Alt-M"     insert-md
                  "Ctrl-Alt-\\"    insert-mjlt
+                 "Ctrl-Alt-D"     insert-tab-mddefs
+
                  "Ctrl-Alt-W"     enhanced-cut
                  "Ctrl-Alt-Y"     enhanced-yank
                  "Ctrl-X Ctrl-I"  insert-frame
@@ -73,8 +76,8 @@
                 :cm {:width "500px" ;;:height "30px"
                      :out-width "500px" ;; :out-height "0px"
                      :ed-out-order :first-last}}
-  :doc {:max-height "920px"
-        :max-width "2000px"}
+  :doc {:max-height "900px"
+        :max-width "2100px"}
   }
 
  :locs
