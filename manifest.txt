@@ -1,4 +1,4 @@
-V1.3.0
+V1.4.0
 config.edn
 linux-runserver
 jvm11+-linux-runserver
@@ -7,11 +7,16 @@ jvm11+-mac-runserver
 j8-cacerts
 Code/Scratch/mixed-defs.clj
 Code/Scratch/regression-example-data.clj
+Code/Scratch/slopes.clj
 Code/Templates/visdefs.cljs
 Code/Templates/widgets.cljs
 Code/Templates/ml-charts.clj
 Code/TMD/tmd-helpers.clj
 Code/TMD/tmd-tc-deps-req.clj
+Code/Tutorials/present-templates.clj
+Code/Tutorials/vgl->picframe.clj
+Code/Uncomplicate/deepdiamond-deps-req.clj
+Code/Uncomplicate/neanderthal-deps-req.clj
 Docs/Scicloj/SaiteOverview.clj
 Docs/Scicloj/ml.clj
 Docs/Scicloj/Tutorials.clj
