@@ -135,9 +135,10 @@
                     "Windows 10" "win-mkl-libs.tar.gz"}]
     (when (not (fs/exists? (fs/join saitedir "Libs")))
       (fs/mkdirs (fs/fullpath (fs/join saitedir "Libs"))))
-    (when-let [file (os-mkl-map os)]
-      (println "Installing MKL libraries - may take a minute or so...")
-      (get-mkl-libs (fs/fullpath saitedir) file))))
+    (if-let [file (os-mkl-map os)]
+      (do (println "Installing MKL libraries - may take a minute or so...")
+          (get-mkl-libs (fs/fullpath saitedir) file))
+      (println (format "Unknown OS '%s'. Known OS %s" os (keys os-mkl-map))))))
 
 
 (defn set-uberjar-cp [saitedir version]
@@ -149,12 +150,15 @@
           (->> (spit f))))))
 
 
+(defn get-jar-path []
+  (-> (class *ns*)
+      .getProtectionDomain
+      .getCodeSource
+      .getLocation
+      .toURI .getPath))
+
 (defn move-jar-to-home [saitedir]
-  (let [jar (-> (class *ns*)
-                .getProtectionDomain
-                .getCodeSource
-                .getLocation
-                .toURI .getPath)]
+  (let [jar (get-jar-path)]
     (fs/copy jar (fs/join saitedir (fs/basename jar)))
     (fs/basename jar)))
 
@@ -173,7 +177,7 @@
         "Home directory of saite")
 
   (println "Installing resources...")
-  (doseq [res ["Docs" "Data"
+  (doseq [res ["Code" "Docs" "Data"
                "linux-runserver" "jvm11+-linux-runserver"
                "mac-runserver"   "jvm11+-mac-runserver"
                "config.edn"]]
@@ -187,7 +191,11 @@
   (install-resource (fs/join saitedir "resources") "public")
 
   ;; Grab MKL libs for OS
-  (install-mkl saitedir)
+  (try
+    (install-mkl saitedir)
+    (catch Exception e#
+      (let [msg (str ((Throwable->map e#) :cause))]
+        (println "MKL install failed: " msg))))
 
   ;; Move JAR to saite home directory and set the uberjar classpath
   (let [version (-> (move-jar-to-home saitedir) (cljstr/split #"-") second)]
@@ -223,8 +231,12 @@
       (doseq [res resources]
         (cond
           (= res "MKL")
-          (do (println "Updating MKL support...")
-              (install-mkl reldir))
+          (try
+            (do (println "Updating MKL support...")
+                (install-mkl reldir))
+            (catch Exception e#
+              (let [msg (str ((Throwable->map e#) :cause))]
+                (println "MKL update failed: " msg))))
 
           (#{"linux-runserver" "jvm11+-linux-runserver"
              "mac-runserver"   "jvm11+-mac-runserver"
@@ -315,8 +327,10 @@
 
         (and http-port rpl-port)
         (if (find-set-home-dir)
-          (do
-            (println :http-port http-port :rpl-port rpl-port)
+          (let [jar (get-jar-path)
+                version (-> jar fs/basename (cljstr/split #"-") second
+                            (->> (str "V")))]
+            (println version :http-port http-port :rpl-port rpl-port)
             (nrs/start-server :port rpl-port :handler nrepl-handler)
             (.bindRoot Compiler/LOADER
                        (clojure.lang.DynamicClassLoader.
