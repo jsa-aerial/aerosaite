@@ -138,7 +138,8 @@
     (if-let [file (os-mkl-map os)]
       (do (println "Installing MKL libraries - may take a minute or so...")
           (get-mkl-libs (fs/fullpath saitedir) file))
-      (println (format "Unknown OS '%s'. Known OS %s" os (keys os-mkl-map))))))
+      (println (format "Unsupported OS '%s'. Supported OSes %s"
+                       os (keys os-mkl-map))))))
 
 
 (defn set-uberjar-cp [saitedir version]
