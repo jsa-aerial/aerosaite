@@ -1,4 +1,4 @@
-V1.4.1
+V1.4.2
 config.edn
 linux-runserver
 jvm11+-linux-runserver
@@ -14,7 +14,7 @@ Code/Templates/ml-charts.clj
 Code/TMD/tmd-helpers.clj
 Code/TMD/tmd-tc-deps-req.clj
 Code/Tutorials/present-templates.clj
-Code/Tutorials/vgl->picframe.clj
+Code/Tutorials/vgl2picframe.clj
 Code/Uncomplicate/deepdiamond-deps-req.clj
 Code/Uncomplicate/neanderthal-deps-req.clj
 Docs/Scicloj/SaiteOverview.clj
