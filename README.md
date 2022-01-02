@@ -18,7 +18,7 @@ Table of Contents
 
 ## Obtaining
 
-wget http://bioinformatics.bc.edu/~jsa/aerial.aerosaite-1.4.0-standalone.jar
+wget http://bioinformatics.bc.edu/~jsa/aerial.aerosaite-1.4.1-standalone.jar
 
 Or use curl or whatever else you like for fetching web located resources
 
@@ -26,7 +26,7 @@ Or use curl or whatever else you like for fetching web located resources
 
 Now able to use JDK 8 or JDK 11+.  However, only tested with 8 and 11, while 16 is deprecated with binary incompatibilities with 17.  In general just stick with LTS versions.  **UPDATE** jdk-17 has been tested and it also works!
 
-`java -jar aerial.aerosaite-1.4.0-standalone.jar --install`
+`java -jar aerial.aerosaite-1.4.1-standalone.jar --install`
 
 take the defaults, in particular `~/.saite` for application home directory.  [MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html#gs.gy8xm2) suitable for [Neanderthal](https://neanderthal.uncomplicate.org) will be downloaded  as part of the installation.  It will also set up the paths on Linux and MacOS.  Windows will get the libraries in the `.saite/Libs` directory, but auto setup is not yet available for Win as I haven't had access to be able to put together a working script for it.
 
@@ -35,7 +35,7 @@ take the defaults, in particular `~/.saite` for application home directory.  [MK
 
 If you already have Saite, you can update it to the latest version with the `--update` switch.
 
-`java -jar aerial.aerosaite-1.4.0-standalone.jar --update`
+`java -jar aerial.aerosaite-1.4.1-standalone.jar --update`
 
 
 ## Running
