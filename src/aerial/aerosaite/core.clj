@@ -143,12 +143,21 @@
 
 
 (defn set-uberjar-cp [saitedir version]
-  (let [runners (fs/glob (fs/join saitedir "*runserver"))]
+  ;; Windows can't use file globbing (errors out) and must have a
+  ;; `.bat' extension.  So, this is not as clean as might be hoped
+  (let [runners (concat (fs/directory-files saitedir "runserver")
+                        (fs/directory-files saitedir "bat"))
+        runner-regexs {"Linux" #"linux-"
+                       "Mac OS X" #"mac-"
+                       "Windows 10" #"win-"}
+        os (System/getProperty "os.name")]
     (doseq [f runners]
-      (-> f slurp
-          (cljstr/replace "SAITEDIR" saitedir)
-          (cljstr/replace "VERSION" version)
-          (->> (spit f))))))
+      (if (re-find (runner-regexs os) f)
+        (-> f slurp
+            (cljstr/replace "SAITEDIR" saitedir)
+            (cljstr/replace "VERSION" version)
+            (->> (spit f)))
+        (fs/rm f)))))
 
 
 (defn get-jar-path []
@@ -179,8 +188,9 @@
 
   (println "Installing resources...")
   (doseq [res ["Code" "Docs" "Data"
-               "linux-runserver" "jvm11+-linux-runserver"
-               "mac-runserver"   "jvm11+-mac-runserver"
+               "linux-runserver"   "jvm11+-linux-runserver"
+               "mac-runserver"     "jvm11+-mac-runserver"
+               "win-runserver.bat" "jvm11+-win-runserver.bat"
                "config.edn"]]
     (install-resource saitedir res))
 
@@ -239,8 +249,9 @@
               (let [msg (str ((Throwable->map e#) :cause))]
                 (println "MKL update failed: " msg))))
 
-          (#{"linux-runserver" "jvm11+-linux-runserver"
-             "mac-runserver"   "jvm11+-mac-runserver"
+          (#{"linux-runserver"   "jvm11+-linux-runserver"
+             "mac-runserver"     "jvm11+-mac-runserver"
+             "win-runserver.bat" "jvm11+-win-runserver.bat"
              "config.edn"} res)
           (let [old (str res "-old")]
             (when (fs/exists? (fs/join saitedir res))
