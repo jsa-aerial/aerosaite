@@ -1,8 +1,9 @@
 
 
+
 ;;; Base deps and requires for TMD and TC
-(deps '[[techascent/tech.ml.dataset "6.025"]
-        [scicloj/tablecloth "6.025"]])
+(deps '[[techascent/tech.ml.dataset "6.065"]
+        [scicloj/tablecloth "6.051"]])
 
 (require '[tech.v3.dataset :as ds]
          '[tech.v3.datatype :as dtype]
@@ -20,10 +21,9 @@
          '[next.jdbc.result-set :as rs])
 
 ;;; Actual tmd.sql deps / requires
-(deps '[[techascent/tech.ml.dataset.sql "6.00-beta-7"]])
+(deps '[[techascent/tech.ml.dataset.sql "6.046-01"]])
 
 (require '[tech.v3.dataset.sql :as dsql])
-(require '[tech.v3.dataset.sql.impl :as dsqli])
 
 ;;; Example data-source and connection usable by tmd.sql:
 (def refseq77-db
@@ -37,3 +37,23 @@
 
 
 
+
+
+
+
+(require '[tech.v3.dataset.rolling :as drl]
+         '[tech.v3.dataset.column :as dsc])
+
+(-> [[:a [1 2 3]] [:b [6 7 8]]]
+    tc/dataset
+    (drl/rolling {:window-type :fixed
+                  :window-size 2
+                  :relative-window-position :right
+                  :edge-mode :zero}
+                 {:suma (drl/sum :a) :sumb (drl/sum :b)})
+    (tc/add-column
+     :sum (fn[ds]
+            (dsc/column-map
+             (fn[a b] (+ a b))
+             :long
+             (ds :suma) (ds :sumb)))))
