@@ -20,6 +20,10 @@ Table of Contents
 
 wget http://bioinformatics.bc.edu/~jsa/aerial.aerosaite-1.4.4-standalone.jar
 
+if the above is not working use the following mirror (as of 21-Feb-2023 the `bioinformatics.bc.edu` site is undergoing a maintenance migration and will be unavailable to the public for some time) 
+
+wget -O aerial.aerosaite-1.4.4-standalone.jar "https://drive.google.com/uc?id=1b8SjAKFqP8u7BS3D3XxgqEQCOnN1_1KZ"
+
 Or use curl or whatever else you like for fetching web located resources
 
 ## Installation
