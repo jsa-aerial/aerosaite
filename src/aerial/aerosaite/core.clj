@@ -56,6 +56,10 @@
     :parse-fn #(Integer/parseInt %)
     :validate [#(< 4000 % 5000) "Must be a number between 4001 and 4999"]]
 
+   ["-S" "--shutdown-code CODE" "A password for server shutdown from menu"
+    :default ""
+    :validate [#(string? %) "Must be a string!"]]
+
    ["-h" "--help" "Print this help"
     :default true]])
 
@@ -314,6 +318,7 @@
         errors (opts :errors)
         http-port (options :port)
         rpl-port (options :repl-port)
+        shutdown-code (options :shutdown-code)
         install? (options :install)
         update? (options :update)
         nrepl-handler (nrepl-handler-hack)]
@@ -349,6 +354,7 @@
                         (clojure.lang.RT/baseLoader)))
             (println (str (Thread/currentThread))
                      (str (deref Compiler/LOADER)))
+            (as/set-shutdown-code! shutdown-code)
             (as/start http-port))
           (do
             (println "Cannot find std home directory '~/.saite'")
