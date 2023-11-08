@@ -1,5 +1,7 @@
 @echo off
 
+set PATH=%PATH%;SAITEDIR\Libs
+
 START /B java ^
          --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED ^
          --add-opens=java.base/sun.nio.ch=ALL-UNNAMED ^
