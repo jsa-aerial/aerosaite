@@ -295,16 +295,8 @@
 
 (defn nrepl-handler-hack []
   (require 'cider.nrepl)
-  (let [cm (var-get (ns-resolve 'cider.nrepl 'cider-middleware))
-        ;;cm (filter #(not= % 'cider.nrepl/wrap-pprint-fn) cm)
-        resolve-or-fail (fn[sym] (println :sym sym)
-                          (or (ns-resolve 'cider.nrepl sym)
-                              (throw (IllegalArgumentException.
-                                      (format "Cannot resolve %s" sym)))))]
-    (clojure.pprint/pprint cm)
-    (apply nrs/default-handler
-           (concat (mapv resolve-or-fail cm)
-                   [#'wrap-refactor]))))
+  (let [cm (var-get (ns-resolve 'cider.nrepl.middleware 'cider-middleware))]
+    (apply nrs/default-handler cm)))
 
 
 (defn -main
@@ -347,13 +339,17 @@
           (let [jar (get-jar-path)
                 version (-> jar fs/basename (cljstr/split #"-") second
                             (->> (str "V")))]
+
             (println version :http-port http-port :rpl-port rpl-port)
-            (nrs/start-server :port rpl-port :handler nrepl-handler)
+            (nrs/start-server :bind "0:0:0:0:0:0:0:0" :port rpl-port
+                              :handler nrepl-handler)
+
             (.bindRoot Compiler/LOADER
                        (clojure.lang.DynamicClassLoader.
                         (clojure.lang.RT/baseLoader)))
             (println (str (Thread/currentThread))
                      (str (deref Compiler/LOADER)))
+
             (as/set-shutdown-code! shutdown-code)
             (as/start http-port))
           (do
