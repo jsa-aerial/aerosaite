@@ -1,4 +1,4 @@
-V1.6.3
+V1.6.9
 config.edn
 linux-runserver
 jvm11+-linux-runserver
