@@ -14,9 +14,8 @@
             [clojure.tools.cli :refer [parse-opts]]
 
             ;; Tunneling Cider nREPL support
-            [clojure.tools.nrepl.server :as nrs]
-            #_[cider.nrepl :refer [cider-middleware]] ; BROKEN SIDE EFFECTS
-            [refactor-nrepl.middleware :refer [wrap-refactor]]
+            [nrepl.server :as nrs]
+            #_[refactor-nrepl.middleware :refer [wrap-refactor]]
 
             [cpath-clj.core :as cp] ; Extract Jar resources
 
